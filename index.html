@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <meta name="theme-color" content="#fafafa" />
+  </head>
+
+  <body>
+    <!-- Add your site or application content here -->
+    <div style="border-style: solid;margin: 10px;">
+      <h2>information</h2>
+      <h1 id="screen">...</h1>
+      <h2 id="timer">00</h2>
+      </div>
+    <div style="border-style: solid;margin: 10px;">
+
+      <form id="roundParams">
+        <label for="roundLength">roundLength:</label><br />
+        <input type="number" id="roundLength" name="roundLength" value="60" /><br />
+        <label for="minDelay">Interval min:</label><br />
+        <input type="number" id="minDelay" name="minDelay" value="1" /><br /><br />
+        <label for="maxDelay">Interval Max:</label><br />
+        <input type="number" id="maxDelay" name="maxDelay" value="3" /><br /><br />
+      </form>
+      <form id="strikeParams">
+        <input type="checkbox" id="choice1" name="choice1" value="1" checked/>
+        <label for="choice1"> 1</label><br />
+        <input type="checkbox" id="choice2" name="choice2" value="2" checked/>
+        <label for="choice2"> 1-2</label><br />
+        <input type="checkbox" id="choice3" name="choice3" value="3" checked/>
+        <label for="choice3"> 2-1</label>
+        <input type="button" value="Submit" onclick="startDrill();" />
+
+      </form>
+    </div>
+
+
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <script>
+      window.ga = function () {
+        ga.q.push(arguments);
+      };
+      ga.q = [];
+      ga.l = +new Date();
+      ga("create", "UA-XXXXX-Y", "auto");
+      ga("set", "anonymizeIp", true);
+      ga("set", "transport", "beacon");
+      ga("send", "pageview");
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script>
+  </body>
+</html>
