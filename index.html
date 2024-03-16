@@ -1,72 +1,184 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="og:title" content="" />
-    <meta property="og:type" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="" />
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</head>
 
-    <link rel="manifest" href="site.webmanifest" />
-    <link rel="apple-touch-icon" href="icon.png" />
-    <!-- Place favicon.ico in the root directory -->
-
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/main.css" />
-
-    <meta name="theme-color" content="#fafafa" />
-  </head>
-
-  <body>
-    <!-- Add your site or application content here -->
-    <div style="border-style: solid;margin: 10px;">
-      <h2>information</h2>
-      <h1 id="screen">...</h1>
-      <h2 id="timer">00</h2>
-      </div>
-    <div style="border-style: solid;margin: 10px;">
-
-      <form id="roundParams">
-        <label for="roundLength">roundLength:</label><br />
-        <input type="number" id="roundLength" name="roundLength" value="60" /><br />
-        <label for="minDelay">Interval min:</label><br />
-        <input type="number" id="minDelay" name="minDelay" value="1" /><br /><br />
-        <label for="maxDelay">Interval Max:</label><br />
-        <input type="number" id="maxDelay" name="maxDelay" value="3" /><br /><br />
-      </form>
-      <form id="strikeParams">
-        <input type="checkbox" id="choice1" name="choice1" value="1" checked/>
-        <label for="choice1"> 1</label><br />
-        <input type="checkbox" id="choice2" name="choice2" value="2" checked/>
-        <label for="choice2"> 1-2</label><br />
-        <input type="checkbox" id="choice3" name="choice3" value="3" checked/>
-        <label for="choice3"> 2-1</label>
-        <input type="button" value="Submit" onclick="startDrill();" />
-
-      </form>
+<body>
+  <!-- Add your site or application content here -->
+  <!-- BEGIN: Modified Code -->
+  <div class="card" style="margin: 10px">
+    <div class="card-body text-center">
+      <h1 class="card-title" id="screen" style="font-size: 90px ">...</h1>
+      <h2 class="card-subtitle mb-2 text-muted" id="timer">00</h2>
     </div>
+  </div>
+  <div class="row" id="drillConfiguration">
+    <div class="col-md-3 card p-3">
+      <h5 class="card-title
+              ">Drill Configuration</h5>
+      <form id="drillParams" class="row">
+        <label for="roundCount">roundCount:</label><br />
+        <input type="number" id="roundCount" name="roundCount" class="form-control" value="3" />
+        <label for="roundLength">roundLength:</label><br />
+        <input type="number" id="roundLength" name="roundLength" class="form-control" value="120" />
+        <label for="minDelay">Interval min:</label><br />
+        <input type="number" id="minDelay" name="minDelay" class="form-control" value="1" <label for="maxDelay">Interval
+        Max:</label><br />
+        <input type="number" id="maxDelay" name="maxDelay" class="form-control" value="3">
+      </form>
+      <input type="button" class="btn btn-primary" value="Submit" onclick="startDrill();" />
+    </div>
+    <div class="col-md-9 card p-3" id="strikeConfiguration">
+      <h5 class="card-title
+              ">Strike Configuration</h5>
+      <form id="strikeList">
+        <div class="row mb-3 strikeRow">
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="text" name="strike0" value="1" class="form-control form-control-sm" id="strike0">
+              <label for="strike0">Strike
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="number" name="duration0" value=".7" class="form-control form-control-sm" id="duration0">
+              <label for="duration0">Duration
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <select name="color0" id="color0" class="form-control form-control-sm">
+                <option value="#cc0000">Red
+                </option>
+                <option value="#ff9933">Orange
+                </option>
+                <option value="#0099ff" >Blue
+                </option>
+                <option value="#ff00ff" >Pink
+                </option>
+                <option value="#33cc33">Green
+                </option>
+              </select>
+              <label for="color0">Color
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <select name="sound0" id="sound0" class="form-control form-control-sm">
+                <option value="https://www.soundjay.com/buttons/beep-07a.mp3">Beep1
+                </option>
+              </select>
+              <label for="sound0">Sound</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 strikeRow">
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="text" name="strike1" value="1-2" class="form-control form-control-sm" id="strike1">
+              <label for="strike1">Strike
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="number" name="duration1" value="1" class="form-control form-control-sm" id="duration1">
+              <label for="duration1">Duration
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <select name="color1" id="color1" class="form-control form-control-sm">
+                <option value="#cc0000">Red
+                </option>
+                <option value="#ff9933" selected="selected">Orange
+                </option>
+                <option value="#0099ff" >Blue
+                </option>
+                <option value="#ff00ff" >Pink
+                </option>
+                <option value="#33cc33">Green
+                </option>
+              </select>
+              <label for="color1">Color
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <select name="sound1" id="sound1" class="form-control form-control-sm">
+                <option value="https://www.soundjay.com/buttons/beep-07a.mp3">Beep1
+                </option>
+              </select>
+              <label for="sound1">Sound</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 strikeRow">
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="text" name="strike2" value="1-2 hook" class="form-control form-control-sm" id="strike2">
+              <label for="strike2">Strike
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="number" name="duration2" value="1.5" class="form-control form-control-sm" id="duration2">
+              <label for="duration2">Duration
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <select name="color2" id="color2" class="form-control form-control-sm">
+                <option value="#cc0000">Red
+                </option>
+                <option value="#ff9933">Orange
+                </option>
+                <option value="#0099ff" selected="selected" >Blue
+                </option>
+                <option value="#ff00ff" >Pink
+                </option>
+                <option value="#33cc33">Green
+                </option>
+              </select>
+              <label for="color2">Color
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-floating">
+              <select name="sound" id="sound2" class="form-control form-control-sm">
+                <option value="https://www.soundjay.com/buttons/beep-07a.mp3">Beep1
+                </option>
+              </select>
+              <label for="sound2">Sound</label>
+            </div>
+          </div>
+        </div>
 
+      </form>
+    <input type="button" class="btn btn-primary" value="+" onclick="addStrike()" />
+    </div>
+  </div>
+  <!-- END: Modified Code -->
 
-    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+</body>
 
-    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-    <script>
-      window.ga = function () {
-        ga.q.push(arguments);
-      };
-      ga.q = [];
-      ga.l = +new Date();
-      ga("create", "UA-XXXXX-Y", "auto");
-      ga("set", "anonymizeIp", true);
-      ga("set", "transport", "beacon");
-      ga("send", "pageview");
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async></script>
-  </body>
 </html>
